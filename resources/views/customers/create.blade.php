@@ -34,7 +34,7 @@
                         <input type="text" class="form-control" name="phone" placeholder="Моб." value="{{ old('phone') }}">
                         <br/>
 
-                        <input type="text" class="form-control" name="started_at" placeholder="Дата початку" value="{{ old('started_at') }}">
+                        <input type="text" class="form-control" name="started_at" placeholder="Дата підключення" value="{{ old('started_at') }}">
                         <br/>
 
                         <input type="text" class="form-control" name="paid_to" placeholder="Оплачено до" value="{{ old('paid_to') }}">

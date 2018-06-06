@@ -26,12 +26,12 @@ class CustomersController extends Controller
         $request->validate([
             'name' => 'required',
             'password' => 'required',
-            'number_of_objects' => 'required',
+            'number_of_objects' => 'required|integer',
             'email' => 'required',
             'phone' => 'required',
             'started_at' => 'required|date',
             'paid_to' => 'required|date',
-            'paid_all' => 'required',
+            'paid_all' => 'required|numeric',
         ]);
 
         $customer = new Customer();
@@ -48,12 +48,28 @@ class CustomersController extends Controller
 
     public function edit($id)
     {
-        //
+        $customer = Customer::find($id);
+        return view('customers.edit', ['customer' => $customer]);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'password' => 'required',
+            'number_of_objects' => 'required|integer',
+            'email' => 'required',
+            'phone' => 'required',
+            'started_at' => 'required|date',
+            'paid_to' => 'required|date',
+            'paid_all' => 'required|numeric',
+        ]);
+
+        $customer = Customer::find($id);
+        $customer->fill($request->all());
+        $customer->password = Hash::make($request->get('password'));
+        $customer->save();
+        return redirect()->route('customers.index');
     }
 
     public function delete($id)

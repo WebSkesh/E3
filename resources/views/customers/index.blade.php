@@ -37,17 +37,17 @@
                             <td>К-ть обєктів поточна</td>
                             <td>{{ $customer->email }}</td>
                             <td>{{ $customer->phone }}</td>
-                            <td>{{ $customer->number_of_objects }}</td>
+                            <td>{{ $customer->started_at }}</td>
                             <td>{{ $customer->paid_to }}</td>
                             <td>{{ $customer->paid_all }}</td>
                             <td>
                                 {{--<a href="{{ route('customers.view', $customer->id) }}">--}}
                                     {{--<i class="glyphicon glyphicon-eye-open"></i>--}}
                                 {{--</a>--}}
-                                <a href="{{ route('customers.edit', $customer->id) }}">
+                                <a href="{{ route('customers.edit', $customer->id) }}" class="text text-warning">
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </a>
-                                <a href="{{ route('customers.delete', $customer->id) }}" onclick="confirm('Are you sure?')">
+                                <a href="{{ route('customers.delete', $customer->id) }}" class="text text-danger" onclick="return confirm('Are you sure?') ? true : false;">
                                     <i class="glyphicon glyphicon-remove"></i>
                                 </a>
                             </td>
