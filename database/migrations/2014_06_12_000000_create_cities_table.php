@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,19 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->integer('customer_id')->unsigned();
+            $table->foreign('customer_id')
+                ->references('id')
+                ->on('customers')
+                ->onDelete('cascade');
+
             $table->string('name');
-            $table->string('email');
+            $table->string('email')->nullable($value = true);
+            $table->string('phone')->nullable($value = true);
+            $table->string('contact_person')->nullable($value = true);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
