@@ -109,7 +109,7 @@ return [
 
     'menu' => [
         [
-            'text' => 'Customers',
+            'text' => 'Клієнти',
             'url'  => 'customers',
             'icon' => 'user',
         ],

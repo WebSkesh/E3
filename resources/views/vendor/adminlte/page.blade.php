@@ -41,7 +41,7 @@
             <!-- Logo -->
             <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini">EB</span>
+                <span class="logo-mini">ES</span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg">ENERGOBALANS</span>
             </a>
