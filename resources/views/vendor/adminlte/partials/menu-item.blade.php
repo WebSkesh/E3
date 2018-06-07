@@ -1,7 +1,9 @@
 @if (is_string($item))
     <li class="header">{{ $item }}</li>
 @else
+
     <li class="{{ $item['class'] }}">
+
         <a href="{{ $item['href'] }}"
            @if (isset($item['target'])) target="{{ $item['target'] }}" @endif
         >

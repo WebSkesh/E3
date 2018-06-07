@@ -34,21 +34,36 @@
                         <input type="text" class="form-control" name="phone" placeholder="Моб." value="{{ old('phone') }}">
                         <br/>
 
-                        <input type="text" class="form-control" name="started_at" placeholder="Дата підключення" value="{{ old('started_at') }}">
+                        <input type="text" class="date form-control" name="started_at" placeholder="Дата підключення" value="{{ old('started_at') }}">
                         <br/>
 
-                        <input type="text" class="form-control" name="paid_to" placeholder="Оплачено до" value="{{ old('paid_to') }}">
+                        <input type="text" class="date form-control" name="paid_to" placeholder="Оплачено до" value="{{ old('paid_to') }}">
                         <br/>
 
                         <input type="text" class="form-control" name="paid_all" placeholder="Оплачено всього" value="{{ old('paid_all') }}">
                         <br/>
 
-                        <button class="btn btn-success">Створити</button>
-                        <a class="btn btn-default" href="{{ route('customers.index') }}">Відмінити</a>
+                        <button class="btn btn-success">
+                            <i class="glyphicon glyphicon-plus-sign"></i>
+                            Створити
+                        </button>
+                        <a class="btn btn-default" href="{{ route('customers.index') }}">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
+                            Відмінити
+                        </a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
+    <script type="text/javascript">
+        $('.date').datepicker({
+            format: 'yyyy-mm-dd',
+            viewMode: 'years',
+            autoclose:true,
+        });
+    </script>
+
 @endsection
+

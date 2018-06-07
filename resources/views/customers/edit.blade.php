@@ -33,23 +33,37 @@
                         <input type="text" class="form-control" name="phone" placeholder="Моб." value="{{ $customer->phone  }}">
                         <br/>
 
-                        <input type="text" class="form-control" name="started_at" placeholder="Дата підключення" value="{{ $customer->started_at  }}">
+                        <input type="text" class="date form-control" name="started_at" placeholder="Дата підключення" value="{{ $customer->started_at  }}">
                         <br/>
 
-                        <input type="text" class="form-control" name="paid_to" placeholder="Оплачено до" value="{{ $customer->paid_to  }}">
+                        <input type="text" class="date form-control" name="paid_to" placeholder="Оплачено до" value="{{ $customer->paid_to  }}">
                         <br/>
 
                         <input type="text" class="form-control" name="paid_all" placeholder="Оплачено всього" value="{{ $customer->paid_all  }}">
                         <br/>
 
                         <input type="hidden" name="id" value="{{ $customer->id }}">
-                        <button class="btn btn-warning">Зберегти</button>
-                        <a class="btn btn-default" href="{{ route('customers.index') }}">Відмінити</a>
+                        <button class="btn btn-warning">
+                            <i class="glyphicon glyphicon-floppy-disk"></i>
+                            Зберегти
+                        </button>
+                        <a class="btn btn-default" href="{{ route('customers.index') }}">
+                            <i class="glyphicon glyphicon-ban-circle"></i>
+                            Відмінити
+                        </a>
                     </div>
                     {{ csrf_field() }}
                 </form>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $('.date').datepicker({
+            format: 'yyyy-mm-dd',
+            viewMode: 'years',
+            autoclose:true,
+        });
+    </script>
 
 @endsection
