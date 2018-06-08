@@ -11,16 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 //Auth::routes();
 
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/welcome/{id}', 'HomeController@welcome')->name('welcome');
+Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+
+
+Route::get('/enterData', 'EnterDataController@index')->name('enterData');
+Route::get('/analysis', 'AnalysisController@index')->name('analysis');
+Route::get('/admin', 'AdminController@index')->name('admin');
 
 
 Route::group(['prefix'=>'customers', 'middleware' => ['SuperAdminLogin']], function () {

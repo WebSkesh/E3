@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -23,6 +16,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $customers = Customer::all();
+        return view('index', ['customers' => $customers]);
     }
+
+    public function welcome($id) {
+
+        session(['customer_id' => $id]);
+
+        $customer = Customer::find($id);
+        return view('welcome', ['customer' => $customer]);
+    }
+
+
 }
