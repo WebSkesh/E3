@@ -24,14 +24,14 @@ class CustomersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'password' => 'required',
-            'number_of_objects' => 'required|integer',
-            'email' => 'required',
-            'phone' => 'required',
+            'name' => 'required|max:100',
+            'password' => 'required|max:100',
+            'number_of_objects' => 'required|integer|max:5000',
+            'email' => 'required|max:100',
+            'phone' => 'required|max:20',
             'started_at' => 'required|date',
             'paid_to' => 'required|date',
-            'paid_all' => 'required|numeric',
+            'paid_all' => 'required|numeric|max:20',
         ]);
 
         $customer = new Customer();
@@ -55,14 +55,14 @@ class CustomersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'password' => 'required',
-            'number_of_objects' => 'required|integer',
-            'email' => 'required',
-            'phone' => 'required',
+            'name' => 'required|max:100',
+            'password' => 'required|max:100',
+            'number_of_objects' => 'required|integer|max:5000',
+            'email' => 'required|max:100',
+            'phone' => 'required|max:20',
             'started_at' => 'required|date',
             'paid_to' => 'required|date',
-            'paid_all' => 'required|numeric',
+            'paid_all' => 'required|numeric|max:20',
         ]);
 
         $customer = Customer::find($id);
