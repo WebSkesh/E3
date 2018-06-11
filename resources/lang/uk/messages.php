@@ -19,4 +19,10 @@ return [
     'sakalyuk' => 'Сакалюк Д.C. тел.: +380967848377, e-mail: detton1@ukr.net',
     'chornyi' => 'Чорний П.І. тел.: +380969137678, e-mail: skesh@ukr.net',
     'allRightsReserved' => 'Всі права захищено',
+    'city' => 'Місто',
+    'village' => 'Селище',
+    'menuAdmin' => 'Панель адміністратора',
+    'menuUser' => 'Панель користувача',
+    'menuSuperAdmin' => 'Панель суперадміна',
+    'create' => 'Створити',
 ];

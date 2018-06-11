@@ -37,7 +37,7 @@
                 {{ trans('messages.analysis') }}
             </a>
 
-            <a class="btn btn-warning" href="{{ route('admin') }}">
+            <a class="btn btn-warning" href="{{ route('admin.cities.index') }}">
                 <i class="glyphicon glyphicon glyphicon-cog"></i>
                 {{ trans('messages.admin') }}
             </a>

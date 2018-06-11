@@ -23,7 +23,7 @@ Route::get('/analysis', 'AnalysisController@index')->name('analysis');
 Route::get('/admin', 'AdminController@index')->name('admin');
 
 
-Route::group(['prefix'=>'customers', 'middleware' => ['SuperAdminLogin']], function () {
+Route::group(['prefix'=>'customers', 'middleware' => ['super.admin.login', 'menu.customers']], function () {
     Route::match(['get', 'post'], '/', 'CustomersController@index')->name('customers.index');
     Route::get('/create', 'CustomersController@create')->name('customers.create');
     Route::post('/store', 'CustomersController@store')->name('customers.store');
@@ -31,4 +31,27 @@ Route::group(['prefix'=>'customers', 'middleware' => ['SuperAdminLogin']], funct
     Route::get('/edit/{id}', 'CustomersController@edit')->name('customers.edit');
     Route::post('/update/{id}', 'CustomersController@update')->name('customers.update');
     Route::get('/delete/{id}', 'CustomersController@delete')->name('customers.delete');
+});
+
+
+# admin/
+Route::group(['prefix'=>'admin', 'middleware' => ['menu.admin']], function () {
+
+    Route::get('/', function () {
+        return redirect()->route('admin.cities.index');
+    });
+
+    # admin/cities/
+    Route::group(['prefix'=>'cities'], function () {
+        Route::match(['get', 'post'], '/', 'Admin\CitiesController@index')->name('admin.cities.index');
+        Route::get('/create', 'Admin\CitiesController@create')->name('admin.cities.create');
+        Route::post('/store', 'Admin\CitiesController@store')->name('admin.cities.store');
+        Route::get('/view/{id}', 'Admin\CitiesController@view')->name('admin.cities.view');
+        Route::get('/edit/{id}', 'Admin\CitiesController@edit')->name('admin.cities.edit');
+        Route::post('/update/{id}', 'Admin\CitiesController@update')->name('admin.cities.update');
+        Route::get('/delete/{id}', 'Admin\CitiesController@delete')->name('admin.cities.delete');
+    });
+
+
+
 });

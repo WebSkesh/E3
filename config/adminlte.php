@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Energobalans</b>',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>ES</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,11 +108,7 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'Клієнти',
-            'url'  => 'customers',
-            'icon' => 'user',
-        ],
+
     ],
 
     /*

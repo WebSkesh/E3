@@ -60,6 +60,10 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'SuperAdminLogin' => \App\Http\Middleware\SuperAdminLogin::class,
+
+        'super.admin.login' => \App\Http\Middleware\SuperAdminLogin::class,
+        'menu.customers' => \App\Http\Middleware\CustomersMenu::class,
+        'menu.admin' => \App\Http\Middleware\AdminMenu::class,
+        'menu.user' => \App\Http\Middleware\UserMenu::class,
     ];
 }
