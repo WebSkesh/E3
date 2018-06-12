@@ -17,4 +17,15 @@ class Customer extends Model
         'paid_all',
     ];
 
+
+    public function cities()
+    {
+        return $this->hasMany('App\Models\Admin\Cities', 'customer_id', 'id');
+    }
+
+
+    public function categories()
+    {
+        return $this->hasMany('App\Models\Admin\Category', 'customer_id', 'id');
+    }
 }
