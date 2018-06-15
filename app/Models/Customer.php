@@ -28,4 +28,6 @@ class Customer extends Model
     {
         return $this->hasMany('App\Models\Admin\Category', 'customer_id', 'id');
     }
+
+
 }
