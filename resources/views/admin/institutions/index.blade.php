@@ -14,13 +14,7 @@
                         <select name="city_id" class="form-control" id="city_id" onchange="this.form.submit()">
                             <option value="">{{ trans('messages.all') }}</option>
                             @foreach($cities as $city)
-
-                                {{ $selected = NULL }}
-                                @if($city->id == $city_id)
-                                    {{ $selected = "selected" }}
-                                @endif
-
-                                <option value="{{ $city->id }}" {{ $selected }}>{{ $city->name }}</option>
+                                <option value="{{ $city->id }}" {{ $city->id == $city_id ? "selected" : NULL }} >{{ $city->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -32,13 +26,7 @@
                         <select name="category_id" class="form-control" id="category_id" onchange="this.form.submit()">
                             <option value="">{{ trans('messages.all') }}</option>
                             @foreach($categories as $category)
-
-                                {{ $selected = NULL }}
-                                @if($category->id == $category_id)
-                                    {{ $selected = "selected" }}
-                                @endif
-
-                                <option value="{{ $category->id }}" {{ $selected }}>{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ $category->id == $category_id ? "selected" : NULL }} >{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
