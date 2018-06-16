@@ -8,37 +8,74 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="{{ route('admin.cities.update', $city->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.institutions.update', $institution->id) }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <p />
                     <h3>
-                        {{ trans('messages.edit') }} {{ trans_choice('messages.city', 0) }} / {{ trans_choice('messages.village', 0) }}
+                        {{ trans('messages.edit') }} {{ trans_choice('messages.institution', 1) }}
                     </h3>
                     <p />
 
                     <div class="form-group">
 
-                        <input type="text" class="form-control" name="name" placeholder="{{ trans('messages.name') }}" value="{{ $city->name  }}">
+
+                        <div class="form-group">
+                            {{ Form::label('city_id', trans_choice('messages.city', 0)) }}:
+                            <select name="city_id" class="form-control" id="city_id">
+                                @foreach($cities as $city)
+
+                                    {{ $selected = NULL }}
+                                    @if($city->id == $institution->city_id)
+                                        {{ $selected = "selected" }}
+                                    @endif
+
+                                    <option value="{{ $city->id }}" {{ $selected }}>{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('category_id', trans_choice('messages.category', 0)) }}:
+                            <select name="category_id" class="form-control" id="category_id">
+
+                                @foreach($categories as $category)
+
+                                    {{ $selected = NULL }}
+                                    @if($category->id == $institution->category_id)
+                                        {{ $selected = "selected" }}
+                                    @endif
+
+                                    <option value="{{ $category->id }}" {{ $selected }}>{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        {{ Form::label('name', trans('messages.name')) }}:
+                        <input type="text" class="form-control" name="name" id="name" value="{{ $institution->name  }}">
                         <br/>
 
-                        <input type="text" class="form-control" name="email" placeholder="{{ trans('messages.email') }}" value="{{ $city->email  }}">
+                        {{ Form::label('email', trans('messages.email')) }}:
+                        <input type="text" class="form-control" name="email" id="email" value="{{ $institution->email  }}">
                         <br/>
 
-                        <input type="text" class="form-control" name="phone" placeholder="{{ trans('messages.mob') }}" value="{{ $city->phone  }}">
+                        {{ Form::label('phone', trans('messages.mob')) }}:
+                        <input type="text" class="form-control" name="phone" id="phone" value="{{ $institution->phone  }}">
                         <br/>
 
-                        <input type="text" class="form-control" name="contact_person" placeholder="{{ trans('messages.contactPerson') }}" value="{{ $city->contact_person  }}">
+                        {{ Form::label('contact_person', trans('messages.contactPerson')) }}:
+                        <input type="text" class="form-control" name="contact_person" id="contact_person" value="{{ $institution->contact_person  }}">
                         <br/>
 
-                        <input type="password" class="form-control" name="password" placeholder="{{ trans('messages.password') }}" value="">
+                        {{ Form::label('password', trans('messages.password')) }}:
+                        <input type="password" class="form-control" name="password" value="">
                         <br/>
 
                         <button class="btn btn-warning">
                             <i class="glyphicon glyphicon-floppy-disk"></i>
                             {{ trans('messages.save') }}
                         </button>
-                        <a class="btn btn-default" href="{{ route('admin.cities.index') }}">
+                        <a class="btn btn-default" href="{{ route('admin.institutions.index') }}">
                             <i class="glyphicon glyphicon-ban-circle"></i>
                             {{ trans('messages.cancel') }}
                         </a>
@@ -47,13 +84,5 @@
             </div>
         </div>
     </div>
-
-    <script type="text/javascript">
-        $('.date').datepicker({
-            format: 'yyyy-mm-dd',
-            viewMode: 'years',
-            autoclose:true,
-        });
-    </script>
 
 @endsection

@@ -4,6 +4,47 @@
 
     <div class="container">
         <div class="row">
+
+            <form action="{{ route('admin.institutions.index') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        {{ Form::label('city_id', trans('messages.filter')." ".trans_choice('messages.city', 0)) }}:
+                        <select name="city_id" class="form-control" id="city_id" onchange="this.form.submit()">
+                            <option value="">{{ trans('messages.all') }}</option>
+                            @foreach($cities as $city)
+
+                                {{ $selected = NULL }}
+                                @if($city->id == $city_id)
+                                    {{ $selected = "selected" }}
+                                @endif
+
+                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-xs-3 ">
+                    <div class="form-group">
+                        {{ Form::label('category_id', trans('messages.filter')." ".trans_choice('messages.category', 0)) }}:
+                        <select name="category_id" class="form-control" id="category_id" onchange="this.form.submit()">
+                            <option value="">{{ trans('messages.all') }}</option>
+                            @foreach($categories as $category)
+
+                                {{ $selected = NULL }}
+                                @if($category->id == $category_id)
+                                    {{ $selected = "selected" }}
+                                @endif
+
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            </form>
+
             <div class="col-md-12">
 
                 <p />
@@ -38,10 +79,10 @@
                                     {{--<a href="{{ route('customers.view', $customer->id) }}">--}}
                                     {{--<i class="glyphicon glyphicon-eye-open"></i>--}}
                                     {{--</a>--}}
-                                    <a href="{{ route('admin.cities.edit', $institution->id) }}" class="text text-warning">
+                                    <a href="{{ route('admin.institutions.edit', $institution->id) }}" class="text text-warning">
                                         <i class="glyphicon glyphicon-edit"></i>
                                     </a>
-                                    <a href="{{ route('admin.cities.delete', $institution->id) }}" class="text text-danger" onclick="return confirm('Are you sure?') ? true : false;">
+                                    <a href="{{ route('admin.institutions.delete', $institution->id) }}" class="text text-danger" onclick="return confirm('Are you sure?') ? true : false;">
                                         <i class="glyphicon glyphicon-remove"></i>
                                     </a>
                                 </td>

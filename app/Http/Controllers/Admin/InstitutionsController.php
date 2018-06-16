@@ -2,21 +2,39 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Models\City;
 use App\Models\Category;
 use App\Models\Institution;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;use Illuminate\Support\Facades\Hash;
 
 class InstitutionsController extends Controller
 {
 
     public function index()
     {
+        $request = new Request;
+
+        $cities = City::where('customer_id', session('customer_id'))
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $categories = Category::where('customer_id', session('customer_id'))
+            ->orderBy('name', 'asc')
+            ->get();
+
         $institutions = Institution::where('customer_id', session('customer_id'))
             ->orderBy('name', 'asc')
             ->get();
-        return view('admin.institutions.index', ['institutions' => $institutions]);
+
+        return view('admin.institutions.index', [
+            'institutions' => $institutions,
+            'cities' => $cities,
+            'categories' => $categories,
+            'category_id' => $request->input('category_id'),
+            'city_id' => $request->input('city_id'),
+        ]);
     }
 
 
@@ -44,6 +62,7 @@ class InstitutionsController extends Controller
             'password' => 'required|max:100',
             'phone' => 'required|max:20',
             'contact_person' => 'required|max:100',
+            'password' => 'required|max:100',
         ]);
 
         $institution = new Institution();
@@ -64,7 +83,20 @@ class InstitutionsController extends Controller
     public function edit($id)
     {
         $institution = Institution::find($id);
-        return view('admin.institutions.edit', ['institution' => $institution]);
+
+        $cities = City::where('customer_id', session('customer_id'))
+            ->orderBy('name', 'asc')
+            ->get();
+
+        $categories = Category::where('customer_id', session('customer_id'))
+            ->orderBy('name', 'asc')
+            ->get();
+
+        return view('admin.institutions.edit', [
+            'institution' => $institution,
+            'cities' => $cities,
+            'categories' => $categories,
+        ]);
     }
 
 
@@ -75,6 +107,7 @@ class InstitutionsController extends Controller
             'password' => 'required|max:100',
             'phone' => 'required|max:20',
             'contact_person' => 'required|max:100',
+            'password' => 'required|max:100',
         ]);
 
         $institution = Institution::find($id);

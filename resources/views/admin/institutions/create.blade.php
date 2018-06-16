@@ -61,7 +61,7 @@
                             <i class="glyphicon glyphicon-plus-sign"></i>
                             {{ trans('messages.create') }}
                         </button>
-                        <a class="btn btn-default" href="{{ route('admin.cities.index') }}">
+                        <a class="btn btn-default" href="{{ route('admin.institutions.index') }}">
                             <i class="glyphicon glyphicon-ban-circle"></i>
                             {{ trans('messages.cancel') }}
                         </a>
