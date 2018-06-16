@@ -22,12 +22,6 @@ class CreateCategoriesTable extends Migration
                 ->on('customers')
                 ->onDelete('cascade');
 
-            $table->integer('city_id')->unsigned();
-            $table->foreign('city_id')
-                ->references('id')
-                ->on('cities')
-                ->onDelete('cascade');
-
             $table->string('name');
             $table->timestamps();
         });

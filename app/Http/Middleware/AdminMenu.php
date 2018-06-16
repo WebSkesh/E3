@@ -22,11 +22,20 @@ class AdminMenu
             $event->menu->add($customer->name);
             $event->menu->add(
                 [
-                    'text' => trans('messages.city').' / '.trans('messages.village'),
+                    'text' => trans_choice('messages.city', 1).' / '.trans_choice('messages.village', 1),
                     'url'  => route('admin.cities.index'),
                     'icon' => 'university'
+                ],
+                [
+                    'text' => trans_choice('messages.category', 2),
+                    'url'  => route('admin.categories.index'),
+                    'icon' => 'ellipsis-v'
+                ],
+                [
+                    'text' => trans_choice('messages.institution', 2),
+                    'url'  => route('admin.institutions.index'),
+                    'icon' => 'building-o'
                 ]
-
             );
         });
 

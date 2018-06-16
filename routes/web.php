@@ -52,6 +52,26 @@ Route::group(['prefix'=>'admin', 'middleware' => ['menu.admin']], function () {
         Route::get('/delete/{id}', 'Admin\CitiesController@delete')->name('admin.cities.delete');
     });
 
+    # admin/categories/
+    Route::group(['prefix'=>'categories'], function () {
+        Route::get('/', 'Admin\CategoriesController@index')->name('admin.categories.index');
+        Route::get('/create', 'Admin\CategoriesController@create')->name('admin.categories.create');
+        Route::post('/store', 'Admin\CategoriesController@store')->name('admin.categories.store');
+        Route::get('/view/{id}', 'Admin\CategoriesController@view')->name('admin.categories.view');
+        Route::get('/edit/{id}', 'Admin\CategoriesController@edit')->name('admin.categories.edit');
+        Route::post('/update/{id}', 'Admin\CategoriesController@update')->name('admin.categories.update');
+        Route::get('/delete/{id}', 'Admin\CategoriesController@delete')->name('admin.categories.delete');
+    });
 
+    # admin/institutions/
+    Route::group(['prefix'=>'institutions'], function () {
+        Route::get('/', 'Admin\InstitutionsController@index')->name('admin.institutions.index');
+        Route::get('/create', 'Admin\InstitutionsController@create')->name('admin.institutions.create');
+        Route::post('/store', 'Admin\InstitutionsController@store')->name('admin.institutions.store');
+        Route::get('/view/{id}', 'Admin\InstitutionsController@view')->name('admin.institutions.view');
+        Route::get('/edit/{id}', 'Admin\InstitutionsController@edit')->name('admin.institutions.edit');
+        Route::post('/update/{id}', 'Admin\InstitutionsController@update')->name('admin.institutions.update');
+        Route::get('/delete/{id}', 'Admin\InstitutionsController@delete')->name('admin.institutions.delete');
+    });
 
 });

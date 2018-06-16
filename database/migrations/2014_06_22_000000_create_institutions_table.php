@@ -38,6 +38,7 @@ class CreateInstitutionsTable extends Migration
             $table->string('email')->nullable($value = true);
             $table->string('phone')->nullable($value = true);
             $table->string('contact_person')->nullable($value = true);
+            $table->string('password');
             $table->string('address')->nullable($value = true);
             $table->rememberToken();
             $table->timestamps();

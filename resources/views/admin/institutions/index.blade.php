@@ -8,12 +8,12 @@
 
                 <p />
                 <h3>
-                    <a href="{{ route('admin.cities.create') }}" class="btn btn-success">
+                    <a href="{{ route('admin.institutions.create') }}" class="btn btn-success">
                         <i class="glyphicon glyphicon-plus-sign"></i>
                         {{ trans('messages.create') }}
                     </a>
 
-                    {{ trans_choice('messages.city', 1) }} / {{ trans_choice('messages.village', 1) }}
+                    {{ trans_choice('messages.institution', 2) }}
                 </h3>
                 <p />
 
@@ -32,26 +32,26 @@
                         </thead>
 
                         <tbody>
-                        @foreach($cities as $city)
+                        @foreach($institutions as $institution)
                             <tr>
                                 <td>
                                     {{--<a href="{{ route('customers.view', $customer->id) }}">--}}
                                     {{--<i class="glyphicon glyphicon-eye-open"></i>--}}
                                     {{--</a>--}}
-                                    <a href="{{ route('admin.cities.edit', $city->id) }}" class="text text-warning">
+                                    <a href="{{ route('admin.cities.edit', $institution->id) }}" class="text text-warning">
                                         <i class="glyphicon glyphicon-edit"></i>
                                     </a>
-                                    <a href="{{ route('admin.cities.delete', $city->id) }}" class="text text-danger" onclick="return confirm('Are you sure?') ? true : false;">
+                                    <a href="{{ route('admin.cities.delete', $institution->id) }}" class="text text-danger" onclick="return confirm('Are you sure?') ? true : false;">
                                         <i class="glyphicon glyphicon-remove"></i>
                                     </a>
                                 </td>
 
-                                <td>{{ $city->name }}</td>
-                                <td>{{ $city->email }}</td>
-                                <td>{{ $city->phone }}</td>
-                                <td>{{ $city->contact_person }}</td>
-                                <td>{{ $city->created_at }}</td>
-                                <td>{{ $city->updated_at }}</td>
+                                <td>{{ $institution->name }}</td>
+                                <td>{{ $institution->email }}</td>
+                                <td>{{ $institution->phone }}</td>
+                                <td>{{ $institution->contact_person }}</td>
+                                <td>{{ $institution->created_at }}</td>
+                                <td>{{ $institution->updated_at }}</td>
                             </tr>
                         @endforeach
                         </tbody>

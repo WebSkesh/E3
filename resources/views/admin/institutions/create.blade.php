@@ -8,16 +8,34 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="{{ route('admin.cities.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.institutions.store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <p />
                     <h3>
-                        {{ trans('messages.create') }} {{ trans_choice('messages.city', 0) }} / {{ trans_choice('messages.village', 0) }}
+                        {{ trans('messages.create') }} {{ trans_choice('messages.institution', 1) }}
                     </h3>
                     <p />
 
                     <div class="form-group">
+
+                        <div class="form-group">
+                            {{ Form::label('city_id', trans_choice('messages.city', 0)) }}:
+                            <select name="city_id" class="form-control" id="city_id">
+                                @foreach($cities as $city)
+                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            {{ Form::label('category_id', trans_choice('messages.category', 0)) }}:
+                            <select name="category_id" class="form-control" id="category_id">
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         {{ Form::label('name', trans('messages.name')) }}:
                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
@@ -35,8 +53,8 @@
                         <input type="text" class="form-control" name="contact_person" id="contact_person" value="{{ old('contact_person') }}">
                         <br/>
 
-                        {{ Form::label('name', trans('messages.password')) }}:
-                        <input type="password" class="form-control" name="password" value="">
+                        {{ Form::label('password', trans('messages.password')) }}:
+                        <input type="password" class="form-control" name="password" id="password" value="">
                         <br/>
 
                         <button class="btn btn-success">
@@ -52,5 +70,13 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $('.date').datepicker({
+            format: 'yyyy-mm-dd',
+            viewMode: 'years',
+            autoclose:true,
+        });
+    </script>
 
 @endsection

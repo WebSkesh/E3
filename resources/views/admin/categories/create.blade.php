@@ -8,12 +8,12 @@
         <div class="row">
             <div class="col-md-12">
 
-                <form action="{{ route('admin.cities.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('admin.categories.store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <p />
                     <h3>
-                        {{ trans('messages.create') }} {{ trans_choice('messages.city', 0) }} / {{ trans_choice('messages.village', 0) }}
+                        {{ trans('messages.create') }} {{ trans_choice('messages.category', 1) }}
                     </h3>
                     <p />
 
@@ -21,22 +21,6 @@
 
                         {{ Form::label('name', trans('messages.name')) }}:
                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
-                        <br/>
-
-                        {{ Form::label('email', trans('messages.email')) }}:
-                        <input type="text" class="form-control" name="email" id="email" value="{{ old('email') }}">
-                        <br/>
-
-                        {{ Form::label('phone', trans('messages.mob')) }}:
-                        <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone') }}">
-                        <br/>
-
-                        {{ Form::label('contact_person', trans('messages.contactPerson')) }}:
-                        <input type="text" class="form-control" name="contact_person" id="contact_person" value="{{ old('contact_person') }}">
-                        <br/>
-
-                        {{ Form::label('name', trans('messages.password')) }}:
-                        <input type="password" class="form-control" name="password" value="">
                         <br/>
 
                         <button class="btn btn-success">
@@ -52,5 +36,13 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $('.date').datepicker({
+            format: 'yyyy-mm-dd',
+            viewMode: 'years',
+            autoclose:true,
+        });
+    </script>
 
 @endsection

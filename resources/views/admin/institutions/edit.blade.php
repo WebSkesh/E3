@@ -19,24 +19,19 @@
 
                     <div class="form-group">
 
-                        {{ Form::label('name', trans('messages.name')) }}:
-                        <input type="text" class="form-control" name="name" id="name" value="{{ $city->name  }}">
+                        <input type="text" class="form-control" name="name" placeholder="{{ trans('messages.name') }}" value="{{ $city->name  }}">
                         <br/>
 
-                        {{ Form::label('email', trans('messages.email')) }}:
-                        <input type="text" class="form-control" name="email" id="email" value="{{ $city->email  }}">
+                        <input type="text" class="form-control" name="email" placeholder="{{ trans('messages.email') }}" value="{{ $city->email  }}">
                         <br/>
 
-                        {{ Form::label('phone', trans('messages.mob')) }}:
-                        <input type="text" class="form-control" name="phone" id="phone" value="{{ $city->phone  }}">
+                        <input type="text" class="form-control" name="phone" placeholder="{{ trans('messages.mob') }}" value="{{ $city->phone  }}">
                         <br/>
 
-                        {{ Form::label('contact_person', trans('messages.contactPerson')) }}:
-                        <input type="text" class="form-control" name="contact_person" id="contact_person" value="{{ $city->contact_person  }}">
+                        <input type="text" class="form-control" name="contact_person" placeholder="{{ trans('messages.contactPerson') }}" value="{{ $city->contact_person  }}">
                         <br/>
 
-                        {{ Form::label('name', trans('messages.password')) }}:
-                        <input type="password" class="form-control" name="password" value="">
+                        <input type="password" class="form-control" name="password" placeholder="{{ trans('messages.password') }}" value="">
                         <br/>
 
                         <button class="btn btn-warning">
@@ -52,5 +47,13 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $('.date').datepicker({
+            format: 'yyyy-mm-dd',
+            viewMode: 'years',
+            autoclose:true,
+        });
+    </script>
 
 @endsection
