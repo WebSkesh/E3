@@ -83,8 +83,8 @@
                                 <td>{{ $institution->email }}</td>
                                 <td>{{ $institution->phone }}</td>
                                 <td>{{ $institution->contact_person }}</td>
-                                <td>{{ $institution->created_at->format('d.m.Y h:i') }}</td>
-                                <td>{{ $institution->updated_at->format('d.m.Y h:i') }}</td>
+                                <td>{{ $institution->created_at->format('d.m.Y H:i') }}</td>
+                                <td>{{ $institution->updated_at->format('d.m.Y H:i') }}</td>
                             </tr>
                         @endforeach
                         </tbody>

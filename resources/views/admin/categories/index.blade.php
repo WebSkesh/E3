@@ -45,8 +45,8 @@
                                 </td>
 
                                 <td>{{ $category->name }}</td>
-                                <td>{{ $category->created_at->format('d.m.Y h:i') }}</td>
-                                <td>{{ $category->updated_at->format('d.m.Y h:i') }}</td>
+                                <td>{{ $category->created_at->format('d.m.Y H:i') }}</td>
+                                <td>{{ $category->updated_at->format('d.m.Y H:i') }}</td>
                             </tr>
                         @endforeach
                         </tbody>
