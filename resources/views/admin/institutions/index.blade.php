@@ -8,7 +8,7 @@
             <form action="{{ route('admin.institutions.index') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
-                <div class="col-xs-3">
+                <div class="col-xs-12 col-md-3">
                     <div class="form-group">
                         {{ Form::label('city_id', trans('messages.filter')." ".trans_choice('messages.city', 0)) }}:
                         <select name="city_id" class="form-control" id="city_id" onchange="this.form.submit()">
@@ -20,13 +20,13 @@
                                     {{ $selected = "selected" }}
                                 @endif
 
-                                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                <option value="{{ $city->id }}" {{ $selected }}>{{ $city->name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
 
-                <div class="col-xs-3 ">
+                <div class="col-xs-12 col-md-3">
                     <div class="form-group">
                         {{ Form::label('category_id', trans('messages.filter')." ".trans_choice('messages.category', 0)) }}:
                         <select name="category_id" class="form-control" id="category_id" onchange="this.form.submit()">
@@ -38,7 +38,7 @@
                                     {{ $selected = "selected" }}
                                 @endif
 
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" {{ $selected }}>{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -64,6 +64,8 @@
                         <tr>
                             <th></th>
                             <th>{{ trans('messages.name') }}</th>
+                            <th>{{ trans_choice('messages.city', 0) }}</th>
+                            <th>{{ trans_choice('messages.category', 0) }}</th>
                             <th>{{ trans('messages.email') }}</th>
                             <th>{{ trans('messages.mob') }}</th>
                             <th>{{ trans('messages.contactPerson') }}</th>
@@ -88,11 +90,13 @@
                                 </td>
 
                                 <td>{{ $institution->name }}</td>
+                                <td>{{ $institution->city->name}}</td>
+                                <td>{{ $institution->category->name }}</td>
                                 <td>{{ $institution->email }}</td>
                                 <td>{{ $institution->phone }}</td>
                                 <td>{{ $institution->contact_person }}</td>
-                                <td>{{ $institution->created_at }}</td>
-                                <td>{{ $institution->updated_at }}</td>
+                                <td>{{ $institution->created_at->format('d.m.Y h:i') }}</td>
+                                <td>{{ $institution->updated_at->format('d.m.Y h:i') }}</td>
                             </tr>
                         @endforeach
                         </tbody>

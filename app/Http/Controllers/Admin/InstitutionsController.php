@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-
 use App\Models\City;
 use App\Models\Category;
 use App\Models\Institution;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+
 
 class InstitutionsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $request = new Request;
-
         $cities = City::where('customer_id', session('customer_id'))
             ->orderBy('name', 'asc')
             ->get();
@@ -25,6 +25,16 @@ class InstitutionsController extends Controller
             ->get();
 
         $institutions = Institution::where('customer_id', session('customer_id'))
+            ->where(function ($query) use ($request) {
+                if(!empty($request->city_id)) {
+                    $query->where('city_id', $request->city_id);
+                }
+            })
+            ->where(function ($query) use ($request) {
+                if(!empty($request->category_id)) {
+                    $query->where('category_id', $request->category_id);
+                }
+            })
             ->orderBy('name', 'asc')
             ->get();
 
@@ -32,8 +42,8 @@ class InstitutionsController extends Controller
             'institutions' => $institutions,
             'cities' => $cities,
             'categories' => $categories,
-            'category_id' => $request->input('category_id'),
-            'city_id' => $request->input('city_id'),
+            'category_id' => $request->category_id,
+            'city_id' => $request->city_id,
         ]);
     }
 

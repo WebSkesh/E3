@@ -50,8 +50,8 @@
                                 <td>{{ $city->email }}</td>
                                 <td>{{ $city->phone }}</td>
                                 <td>{{ $city->contact_person }}</td>
-                                <td>{{ $city->created_at }}</td>
-                                <td>{{ $city->updated_at }}</td>
+                                <td>{{ $city->created_at->format('d.m.Y h:i') }}</td>
+                                <td>{{ $city->updated_at->format('d.m.Y h:i') }}</td>
                             </tr>
                         @endforeach
                         </tbody>

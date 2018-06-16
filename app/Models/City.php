@@ -20,4 +20,10 @@ class City extends Model
     {
         return $this->belongsTo('App\Models\Customer', 'customer_id', 'id');
     }
+
+    public function institutions()
+    {
+        return $this->hasMany('App\Models\Institution', 'city_id', 'id');
+    }
+
 }

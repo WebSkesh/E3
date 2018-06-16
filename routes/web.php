@@ -65,7 +65,7 @@ Route::group(['prefix'=>'admin', 'middleware' => ['menu.admin']], function () {
 
     # admin/institutions/
     Route::group(['prefix'=>'institutions'], function () {
-        Route::get('/', 'Admin\InstitutionsController@index')->name('admin.institutions.index');
+        Route::match(['get', 'post'], '/', 'Admin\InstitutionsController@index')->name('admin.institutions.index');
         Route::get('/create', 'Admin\InstitutionsController@create')->name('admin.institutions.create');
         Route::post('/store', 'Admin\InstitutionsController@store')->name('admin.institutions.store');
         Route::get('/view/{id}', 'Admin\InstitutionsController@view')->name('admin.institutions.view');
