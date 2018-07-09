@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Institution extends Model
 {
     protected $fillable = [
@@ -35,4 +36,8 @@ class Institution extends Model
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
 
+    public function role()
+    {
+        return $this->hasOne('App\Models\UserRole', 'user_role_id', 'id');
+    }
 }

@@ -28,6 +28,7 @@
                         <th>e-mail</th>
                         <th>Моб.</th>
                         <th>Дата підключення</th>
+                        <th>Ціна за 1 установу/місяць</th>
                         <th>Сплачено до</th>
                         <th>Сплачено всього</th>
                     </tr>
@@ -55,6 +56,7 @@
                             <td>{{ $customer->email }}</td>
                             <td>{{ $customer->phone }}</td>
                             <td>{{ $customer->started_at }}</td>
+                            <td>{{ $customer->one_institution_price }}</td>
                             <td>{{ $customer->paid_to }}</td>
                             <td>{{ $customer->paid_all }}</td>
 

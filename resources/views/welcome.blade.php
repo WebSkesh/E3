@@ -39,7 +39,7 @@
 
             <a class="btn btn-warning" href="{{ route('admin.cities.index') }}">
                 <i class="glyphicon glyphicon glyphicon-cog"></i>
-                {{ trans('messages.admin') }}
+                {{ trans('messages.administration') }}
             </a>
 
             <p /><a href="{{ url("/") }}">{{ trans('messages.toMain') }}</a>

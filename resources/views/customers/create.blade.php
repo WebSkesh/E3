@@ -22,6 +22,9 @@
                         <input type="text" class="form-control" name="name" placeholder="Назва" value="{{ old('name') }}">
                         <br/>
 
+                        <input type="text" class="form-control" name="city" placeholder="Початкове місто" value="{{ old('city') }}">
+                        <br/>
+
                         <input type="password" class="form-control" name="password" placeholder="Пароль" value="">
                         <br/>
 
@@ -35,6 +38,9 @@
                         <br/>
 
                         <input type="text" class="date form-control" name="started_at" placeholder="Дата підключення" value="{{ old('started_at') }}">
+                        <br/>
+
+                        <input type="text" class="form-control" name="one_institution_price" placeholder="Ціна за 1 установу/місяць" value="{{ old('one_institution_price') }}">
                         <br/>
 
                         <input type="text" class="date form-control" name="paid_to" placeholder="Оплачено до" value="{{ old('paid_to') }}">

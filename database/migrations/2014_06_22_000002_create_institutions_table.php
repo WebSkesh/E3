@@ -34,13 +34,18 @@ class CreateInstitutionsTable extends Migration
                 ->on('categories')
                 ->onDelete('cascade');
 
+            $table->integer('user_role_id')->unsigned();
+            $table->foreign('user_role_id')
+                ->references('id')
+                ->on('user_roles')
+                ->onDelete('cascade');
+
             $table->string('name');
             $table->string('email')->nullable($value = true);
             $table->string('phone')->nullable($value = true);
             $table->string('contact_person')->nullable($value = true);
             $table->string('password');
             $table->string('address')->nullable($value = true);
-            $table->rememberToken();
             $table->timestamps();
         });
     }

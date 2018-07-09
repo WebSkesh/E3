@@ -17,8 +17,10 @@
 
                     <div class="form-group">
 
-
                         <input type="text" class="form-control" name="name" placeholder="Назва" value="{{ $customer->name  }}">
+                        <br/>
+
+                        <input type="text" class="form-control" name="city" placeholder="Початкове місто" value="{{ $customer->city }}">
                         <br/>
 
                         <input type="password" class="form-control" name="password" placeholder="Пароль" value="">
@@ -34,6 +36,9 @@
                         <br/>
 
                         <input type="text" class="date form-control" name="started_at" placeholder="Дата підключення" value="{{ $customer->started_at  }}">
+                        <br/>
+
+                        <input type="text" class="form-control" name="one_institution_price" placeholder="Ціна за 1 установу/місяць" value="{{ $customer->one_institution_price }}">
                         <br/>
 
                         <input type="text" class="date form-control" name="paid_to" placeholder="Оплачено до" value="{{ $customer->paid_to  }}">

@@ -35,10 +35,6 @@
                         <input type="text" class="form-control" name="contact_person" id="contact_person" value="{{ $city->contact_person  }}">
                         <br/>
 
-                        {{ Form::label('name', trans('messages.password')) }}:
-                        <input type="password" class="form-control" name="password" value="">
-                        <br/>
-
                         <button class="btn btn-warning">
                             <i class="glyphicon glyphicon-floppy-disk"></i>
                             {{ trans('messages.save') }}
