@@ -128,9 +128,11 @@ class InstitutionsController extends Controller
     }
 
 
-    public function delete($id)
+    public function delete($userId)
     {
-        Institution::find($id)->delete();
+        if(!Institution::isManagement($userId)) {
+            Institution::find($userId)->delete();
+        }
         return redirect()->route('admin.institutions.index');
     }
 }

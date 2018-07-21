@@ -72,9 +72,11 @@
                                     <a href="{{ route('admin.institutions.edit', $institution->id) }}" class="text text-warning">
                                         <i class="glyphicon glyphicon-edit"></i>
                                     </a>
+                                    @if(!\App\Models\Institution::isManagement($institution->id))
                                     <a href="{{ route('admin.institutions.delete', $institution->id) }}" class="text text-danger" onclick="return confirm('Are you sure?') ? true : false;">
                                         <i class="glyphicon glyphicon-remove"></i>
                                     </a>
+                                    @endif
                                 </td>
 
                                 <td>{{ $institution->name }}</td>

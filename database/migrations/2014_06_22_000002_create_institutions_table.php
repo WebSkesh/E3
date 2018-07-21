@@ -34,7 +34,7 @@ class CreateInstitutionsTable extends Migration
                 ->on('categories')
                 ->onDelete('cascade');
 
-            $table->integer('user_role_id')->unsigned();
+            $table->integer('user_role_id')->unsigned()->default(3);
             $table->foreign('user_role_id')
                 ->references('id')
                 ->on('user_roles')

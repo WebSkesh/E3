@@ -19,42 +19,42 @@
 
                     <div class="form-group">
 
+                        @if(!\App\Models\Institution::isManagement($institution->id))
+                             <div class="form-group">
+                                {{ Form::label('city_id', trans_choice('messages.city', 0)) }}:
+                                <select name="city_id" class="form-control" id="city_id">
+                                    @foreach($cities as $city)
 
-                        <div class="form-group">
-                            {{ Form::label('city_id', trans_choice('messages.city', 0)) }}:
-                            <select name="city_id" class="form-control" id="city_id">
-                                @foreach($cities as $city)
+                                        {{ $selected = NULL }}
+                                        @if($city->id == $institution->city_id)
+                                            {{ $selected = "selected" }}
+                                        @endif
 
-                                    {{ $selected = NULL }}
-                                    @if($city->id == $institution->city_id)
-                                        {{ $selected = "selected" }}
-                                    @endif
+                                        <option value="{{ $city->id }}" {{ $selected }}>{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                    <option value="{{ $city->id }}" {{ $selected }}>{{ $city->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                            <div class="form-group">
+                                {{ Form::label('category_id', trans_choice('messages.category', 0)) }}:
+                                <select name="category_id" class="form-control" id="category_id">
 
-                        <div class="form-group">
-                            {{ Form::label('category_id', trans_choice('messages.category', 0)) }}:
-                            <select name="category_id" class="form-control" id="category_id">
+                                    @foreach($categories as $category)
 
-                                @foreach($categories as $category)
+                                        {{ $selected = NULL }}
+                                        @if($category->id == $institution->category_id)
+                                            {{ $selected = "selected" }}
+                                        @endif
 
-                                    {{ $selected = NULL }}
-                                    @if($category->id == $institution->category_id)
-                                        {{ $selected = "selected" }}
-                                    @endif
+                                        <option value="{{ $category->id }}" {{ $selected }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                    <option value="{{ $category->id }}" {{ $selected }}>{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        {{ Form::label('name', trans('messages.name')) }}:
-                        <input type="text" class="form-control" name="name" id="name" value="{{ $institution->name  }}">
-                        <br/>
-
+                            {{ Form::label('name', trans('messages.name')) }}:
+                            <input type="text" class="form-control" name="name" id="name" value="{{ $institution->name  }}">
+                            <br/>
+                        @endif
                         {{ Form::label('email', trans('messages.email')) }}:
                         <input type="text" class="form-control" name="email" id="email" value="{{ $institution->email  }}">
                         <br/>
