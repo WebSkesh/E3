@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\City;
 use App\Models\Customer;
+use App\Models\Category;
 use App\Models\Institution;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
 
 class CustomersController extends Controller
 {
