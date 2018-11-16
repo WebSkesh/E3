@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Hash;
 
 class CustomersController extends Controller
 {
+    const ADMIN_NAME = 'Admin';
+
     private $customer;
     private $city;
     private $category;
@@ -38,20 +40,19 @@ class CustomersController extends Controller
             'started_at' => 'required|date',
             'one_institution_price' => 'required|max:100',
             'paid_to' => 'required|date',
-            'paid_all' => 'required|numeric|max:20',
+            'paid_all' => 'required|numeric',
         ]);
 
         $customer = new Customer();
-
         $customer->fill($request->all());
         $customer->password = Hash::make($request->get('password'));
 
         if($customer->save()) {
             $this->customer = $customer;
-            $this->setCity();
-            $this->setRootCategory();
-            $this->setAdmin();
-            $this->setChief();
+            $this->createDefaultCity();
+            $this->createDefaultCategory();
+            $this->createDefaultAdmin();
+            $this->createDefaultChief();
         }
 
         return redirect()->route('customers.index');
@@ -95,7 +96,7 @@ class CustomersController extends Controller
         return redirect()->route('customers.index');
     }
 
-    private function setCity()
+    private function createDefaultCity()
     {
         $city = new City();
         $city->customer_id = $this->customer->id;
@@ -111,7 +112,7 @@ class CustomersController extends Controller
         return false;
     }
 
-    private function setRootCategory()
+    private function createDefaultCategory()
     {
         $category = new Category();
 
@@ -125,7 +126,7 @@ class CustomersController extends Controller
         return false;
     }
 
-    private function setAdmin() {
+    private function createDefaultAdmin() {
         $admin = new Institution();
 
         $admin->customer_id = $this->customer->id;
@@ -145,7 +146,7 @@ class CustomersController extends Controller
         return false;
     }
 
-    private function setChief() {
+    private function createDefaultChief() {
         $chief = new Institution();
 
         $chief->customer_id = $this->customer->id;
